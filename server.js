@@ -22,9 +22,10 @@ app.post('/api/packing-list', async (req, res) => {
 5. German Phrasebook`;
 
   console.log("Sending fake AI response for testing...");
-  res.json({ list: mockResponse });
+  res.json({ packinglist: mockResponse });
 });
-app.listen(5000, () => console.log("🚀 Server is running on port 5000"));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log("Server running"));
 
 
 
