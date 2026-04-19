@@ -127,7 +127,7 @@ app.post('/api/transport-guide', (req, res) => {
     </a>
   `;
 
-  res.json({ guide: fullResponse });
+  res.json({ transportguide: fullResponse });
 });
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log("Server running"));
