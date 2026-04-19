@@ -15,7 +15,7 @@ app.post('/api/packing-list', async (req, res) => {
   console.log("Received request for city:", city);
 
   // MOCK DATA (Faking the AI response)
-  const mockResponse = `## 🎒 Documents & Essentials
+  const mockResponse = `🎒 Documents & Essentials
 * Passport + multiple photocopies
 * Student visa + residence permit paperwork
 * University admission letter / enrollment proof
@@ -24,7 +24,7 @@ app.post('/api/packing-list', async (req, res) => {
 * International debit/credit card
 * Emergency contact list
 
-## 👕 Clothing
+👕 Clothing
 * T-shirts, shirts, tops
 * Jeans, trousers, joggers
 * Formal outfit
@@ -32,19 +32,19 @@ app.post('/api/packing-list', async (req, res) => {
 * Thermals, Scarf, gloves, beanie
 * Comfortable walking shoes & Formal shoes
 
-## 🧼 Toiletries & Personal Care
+🧼 Toiletries & Personal Care
 * Toothbrush, toothpaste, Shampoo
 * Skincare essentials
 * Basic first-aid kit
 * Towels (2–3)
 
-## 📚 Study Essentials
+📚 Study Essentials
 * Laptop + charger
 * Universal travel adapter
 * Extension board / power strip
 * Backpack
 
-## 🍳 Kitchen & Food Basics
+🍳 Kitchen & Food Basics
 * Basic cutlery set, Plate, bowl, mug
 * Reusable water bottle
 * Spices from home & Instant food`;
