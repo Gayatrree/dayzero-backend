@@ -74,6 +74,61 @@ app.post('/api/packing-list', async (req, res) => {
   console.log("Sending fake AI response for testing...");
   res.json({ packinglist: mockResponse });
 });
+
+// --- NEW ROUTE: LOCAL TRANSPORT GUIDANCE ---
+app.post('/api/transport-guide', (req, res) => {
+  const { origin, destination } = req.body;
+  const destLower = destination ? destination.toLowerCase() : "";
+
+  console.log(`Transport request: From ${origin} to ${destination}`);
+
+  // 1. Define the Specific Logic for Ravensburg/Weingarten
+  let journeyDetails = "";
+
+  if (destLower.includes("ravensburg") || destLower.includes("weingarten")) {
+    journeyDetails = `
+      <div style="background: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #2563eb; margin: 15px 0;">
+        <strong>Your Step-by-Step Journey:</strong><br/>
+        🏙️ <strong>${origin}</strong><br/>
+        &nbsp;&nbsp;&nbsp;➔ Take <strong>S-Bahn (S8 or S9)</strong> to <strong>Main Station (Hbf)</strong><br/>
+        &nbsp;&nbsp;&nbsp;➔ Transfer to a <strong>Regional Train</strong> (RE/RB) toward <strong>Ulm Hbf</strong><br/>
+        &nbsp;&nbsp;&nbsp;➔ Transfer to a train toward <strong>Ravensburg Hbf</strong><br/>
+        &nbsp;&nbsp;&nbsp;➔ Take <strong>Bus Line 1 or 6</strong> toward Weingarten<br/>
+        📍 <strong>Get down at: Lazarettstr Bus Stop</strong>
+      </div>
+    `;
+  } else {
+    // Fallback for other locations
+    journeyDetails = `
+      <div style="background: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #cbd5e1; margin: 15px 0;">
+        <strong>General Route:</strong><br/>
+        Take the S-Bahn from ${origin} to the city center (Hauptbahnhof). From there, use a Regional Train to reach ${destination}. 
+        <em>Check the DB Navigator app for live platform numbers.</em>
+      </div>
+    `;
+  }
+
+  // 2. Combine with General German Transport Info
+  const fullResponse = `
+    <h3 style="color: #2563eb;">🇩🇪 German Transport Instructions</h3>
+    <p>Navigating the German rail system is easy once you know these three things:</p>
+    
+    <ul>
+      <li><strong>The "DB Navigator" App:</strong> This is mandatory. It shows real-time delays, platform changes, and digital tickets.</li>
+      <li><strong>S-Bahn vs. U-Bahn:</strong> <em>S-Bahn</em> connects cities and airports; <em>U-Bahn</em> is the local city subway.</li>
+      <li><strong>Validation:</strong> If you buy a paper ticket at a machine, look for a small yellow/orange box on the platform to "stamp" it before boarding.</li>
+    </ul>
+
+    ${journeyDetails}
+
+    <p><strong>Next Step:</strong> Check the live timetable here:</p>
+    <a href="https://www.int.bahn.de/en" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #2563eb; color: white; text-decoration: none; border-radius: 5px;">
+      Open Official DB Timetable →
+    </a>
+  `;
+
+  res.json({ guide: fullResponse });
+});
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log("Server running"));
 
