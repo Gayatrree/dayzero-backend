@@ -47,7 +47,29 @@ app.post('/api/packing-list', async (req, res) => {
 🍳 Kitchen & Food Basics
 * Basic cutlery set, Plate, bowl, mug
 * Reusable water bottle
-* Spices from home & Instant food`;
+* Spices from home & Instant food
+* Instant food (maggi, oats, coffee/tea)
+
+
+🧳 Travel & Miscellaneous
+
+* Suitcase + backpack
+* Laundry bag
+* Padlock (for suitcase/dorm security)
+* Umbrella (Germany weather is unpredictable)
+* Small sewing kit
+* Cable organizers / pouches
+* Extra spectacles/contact lenses (if needed)
+* Small cash in euros for initial days
+
+🌦️ Seasonal Add-ons
+
+* Light breathable clothing (spring)
+* Sunglasses (spring)
+* Heavy thermal wear layers (winter)
+* Waterproof boots (winter/rainy periods)
+* Hand cream & lip balm (winter dryness)
+* Electric heating pad (optional, winter comfort)`;
 
   console.log("Sending fake AI response for testing...");
   res.json({ packinglist: mockResponse });
