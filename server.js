@@ -15,11 +15,39 @@ app.post('/api/packing-list', async (req, res) => {
   console.log("Received request for city:", city);
 
   // MOCK DATA (Faking the AI response)
-  const mockResponse = `1. Heavy Winter Jacket (Munich is cold!)
-2. European Power Adapter
-3. Student Visa Documents
-4. Comfortable Walking Shoes
-5. German Phrasebook`;
+  const mockResponse = `## 🎒 Documents & Essentials
+* Passport + multiple photocopies
+* Student visa + residence permit paperwork
+* University admission letter / enrollment proof
+* Health insurance documents
+* Passport-sized photos (10–15 copies)
+* International debit/credit card
+* Emergency contact list
+
+## 👕 Clothing
+* T-shirts, shirts, tops
+* Jeans, trousers, joggers
+* Formal outfit
+* Light jacket & Heavy winter jacket
+* Thermals, Scarf, gloves, beanie
+* Comfortable walking shoes & Formal shoes
+
+## 🧼 Toiletries & Personal Care
+* Toothbrush, toothpaste, Shampoo
+* Skincare essentials
+* Basic first-aid kit
+* Towels (2–3)
+
+## 📚 Study Essentials
+* Laptop + charger
+* Universal travel adapter
+* Extension board / power strip
+* Backpack
+
+## 🍳 Kitchen & Food Basics
+* Basic cutlery set, Plate, bowl, mug
+* Reusable water bottle
+* Spices from home & Instant food`;
 
   console.log("Sending fake AI response for testing...");
   res.json({ packinglist: mockResponse });
